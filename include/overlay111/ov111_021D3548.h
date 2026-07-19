@@ -3,9 +3,29 @@
 
 #include "bg_window.h"
 
-void ov111_021D3548(BgConfig *param0, Window *param1);
-void ov111_021D3578(Window *param0);
-void ov111_021D3594(BgConfig *param0, Window *param1);
-void ov111_021D35C0(Window *param0, int param1);
+enum {
+    SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING,
+    SCRATCH_OFF_CARDS_WINDOW_UNK_01,
+    SCRATCH_OFF_CARDS_WINDOW_PRIZE_NAME_0,
+    SCRATCH_OFF_CARDS_WINDOW_PRIZE_NAME_1,
+    SCRATCH_OFF_CARDS_WINDOW_PRIZE_NAME_2,
+    SCRATCH_OFF_CARDS_WINDOW_PRIZE_NAME_3,
+    SCRATCH_OFF_CARDS_WINDOW_UNK_06,
+    SCRATCH_OFF_CARDS_WINDOW_UNK_07,
+    SCRATCH_OFF_CARDS_WINDOW_UNK_08,
+    SCRATCH_OFF_CARDS_WINDOW_UNK_09,
+    SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO,
+    SCRATCH_OFF_CARDS_WINDOW_UNK_11,
+    SCRATCH_OFF_CARDS_WINDOW_TOO_BAD,
+    SCRATCH_OFF_CARDS_WINDOW_NEXT_CARD,
+    SCRATCH_OFF_CARDS_WINDOW_CANCEL,
+    SCRATCH_OFF_CARDS_WINDOW_TEXTBOX,
+    MAX_SCRATCH_OFF_CARDS_WINDOW
+};
+
+void ScratchOffCards_AddWindows(BgConfig *bgConfig, Window *windows);
+void ScratchOffCards_RemoveWindows(Window *windows);
+void ScratchOffCards_DrawWindow(BgConfig *bgConfig, Window *window);
+void ScratchOffCards_DrawMessageBox(Window *window, int frame);
 
 #endif // POKEPLATINUM_OV111_021D3548_H

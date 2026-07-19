@@ -6732,9 +6732,9 @@ BOOL ScrCmd_2E4(ScriptContext *ctx)
     u16 *v5 = ScriptContext_GetVarPointer(ctx);
 
     void **v0 = FieldSystem_GetScriptMemberPtr(ctx->fieldSystem, SCRIPT_MANAGER_PARTY_MANAGEMENT_DATA);
-    UnkStruct_0203E608 *v1 = (UnkStruct_0203E608 *)*v0;
-    *v4 = v1->unk_08[v3];
-    *v5 = v1->unk_0E[v3];
+    ExternalDataSOC *v1 = (ExternalDataSOC *)*v0;
+    *v4 = v1->strange_unk_08[v3];
+    *v5 = v1->strange_unk_0E[v3];
 
     return FALSE;
 }

@@ -1695,14 +1695,14 @@ void *sub_0203E608(FieldSystem *fieldSystem, enum HeapID heapID)
     FS_EXTERN_OVERLAY(overlay111);
 
     static ApplicationManagerTemplate v1 = {
-        ov111_021D0D80,
-        ov111_021D0E34,
-        ov111_021D0F40,
+        ScratchOffCards_Init,
+        ScratchOffCards_Main,
+        ScratchOffCards_Exit,
         FS_OVERLAY_ID(overlay111)
     };
 
-    UnkStruct_0203E608 *v0 = Heap_Alloc(heapID, sizeof(UnkStruct_0203E608));
-    memset(v0, 0, sizeof(UnkStruct_0203E608));
+    ExternalDataSOC *v0 = Heap_Alloc(heapID, sizeof(ExternalDataSOC));
+    memset(v0, 0, sizeof(ExternalDataSOC));
 
     v0->saveData = fieldSystem->saveData;
     FieldSystem_StartChildProcess(fieldSystem, &v1, v0);
