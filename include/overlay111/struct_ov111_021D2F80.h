@@ -8,7 +8,7 @@
 typedef struct {
     SpriteList *spriteList;
     G2dRenderer g2dRenderer;
-    SpriteResourceCollection *unk_190[4];
+    SpriteResourceCollection *spriteResources[4];
     SpriteResource *unk_1A0[5][4];
 } UnkStruct_ov111_021D2F80;
 

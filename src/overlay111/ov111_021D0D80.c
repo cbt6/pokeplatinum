@@ -12,6 +12,7 @@
 #include "overlay111/ov111_021D3548.h"
 #include "overlay111/sco_narc_members.h"
 #include "overlay111/struct_ov111_021D2F80.h"
+#include "overlay111/temp.h"
 
 #include "bg_window.h"
 #include "font.h"
@@ -43,9 +44,7 @@
 #include "vram_transfer.h"
 #include "yes_no_touch_menu.h"
 
-#include "res/text/bank/unk_0540.h"
-
-#define NUMBER_OF_SLOTS 9
+#include "res/text/bank/scratch_off_cards_game.h"
 
 enum {
     anim_id_0,
@@ -62,142 +61,77 @@ typedef struct {
     u8 r;
 } UnkStruct_ov111_021D3728;
 
-typedef struct UnkStruct_ov111_021D0F7C {
-    ApplicationManager *unk_00;
-    ApplicationManager *unk_04;
-    u8 unk_08;
-    u8 dummy_09;
-    u8 unk_0A;
-    u8 unk_0B;
-    u8 unk_0C;
-    u8 unk_0D;
-    u8 unk_0E;
-    u8 unk_0F;
-    s16 unk_10;
-    s16 unk_12;
-    u8 unk_14;
-    u8 unk_15[4];
-    u8 unk_19[3];
-    VecFx32 unk_1C;
-    VecFx32 unk_28;
-    PaletteAnimator *unk_34;
-    MessageLoader *messageLoader;
-    StringTemplate *unk_3C;
-    String *unk_40;
-    String *unk_44;
-    u16 unk_48[8];
-    BgConfig *bgConfig;
-    Window unk_5C[MAX_SCRATCH_OFF_CARDS_WINDOW];
-    PaletteData *paletteData;
-    FontSpecialCharsContext *specialChars;
-    Options *options;
-    SaveData *saveData;
-    UnkStruct_ov111_021D2F80 unk_16C;
-    UnkStruct_ov111_021D33F4 *unk_35C[4];
-    UnkStruct_ov111_021D33F4 *unk_36C[9];
-    UnkStruct_ov111_021D33F4 *unk_390[4];
-    UnkStruct_ov111_021D33F4 *unk_3A0;
-    UnkStruct_ov111_021D33F4 *unk_3A4;
-    UnkStruct_ov111_021D33F4 *unk_3A8[3];
-    UnkStruct_ov111_021D33F4 *unk_3B4[3];
-    UnkStruct_ov111_021D33F4 *unk_3C0;
-    u8 unk_3C4[NUMBER_OF_SLOTS];
-    u16 prizes[4];
-    u16 *unk_3D8;
-    u16 *destVarItemId;
-    u16 *destVarItemQty;
-    NARC *narc;
-    u8 padding_3E8[8];
-    void *unk_3F0;
-    NNSG2dCharacterData *charData;
-    u8 *unk_3F8;
-    YesNoTouchMenu *yesNoMenu;
-    u8 unk_400[9];
-    u8 unk_409;
-    u8 unk_40A;
-    u8 unk_40B;
-    u8 unk_40C_0 : 1;
-    u8 unk_40C_1 : 7;
-    u8 unk_40D;
-    u8 unk_40E[3];
-    u8 unk_411[9];
-    u32 unk_41C;
-    u32 unk_420;
-    TouchPadDataBuffer unk_424;
-    u8 unk_466[38400];
-} UnkStruct_ov111_021D0F7C;
-
 BOOL ScratchOffCards_Init(ApplicationManager *appMan, int *state);
 BOOL ScratchOffCards_Main(ApplicationManager *appMan, int *state);
 BOOL ScratchOffCards_Exit(ApplicationManager *appMan, int *state);
-static BOOL ov111_021D0F7C(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D0FC8(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D10B8(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D116C(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D1284(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D1980(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D1A88(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D1AF4(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D1B44(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D1B90(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D1BEC(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D1C0C(UnkStruct_ov111_021D0F7C *param0);
+static BOOL ov111_021D0F7C(TheStruct *param0);
+static BOOL ov111_021D0FC8(TheStruct *param0);
+static BOOL ov111_021D10B8(TheStruct *param0);
+static BOOL ov111_021D116C(TheStruct *param0);
+static BOOL ov111_021D1284(TheStruct *param0);
+static BOOL ov111_021D1508(TheStruct *param0);
+static BOOL ov111_021D1980(TheStruct *param0);
+static BOOL ov111_021D1A88(TheStruct *param0);
+static void ov111_021D1AF4(TheStruct *param0);
+static void ov111_021D1B44(TheStruct *param0);
+static void ov111_021D1B90(TheStruct *param0);
+static void ov111_021D1BEC(TheStruct *param0);
+static void ov111_021D1C0C(TheStruct *param0);
 static void ov111_021D1D30(void);
-static void ov111_021D1D68(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D1F70(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D1F84(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D1FB4(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D2034(UnkStruct_ov111_021D0F7C *param0);
-static void ScratchOffCards_InitGraphics(UnkStruct_ov111_021D0F7C *param0);
+static void ov111_021D1D68(TheStruct *param0);
+static void ov111_021D1F70(TheStruct *param0);
+static void ov111_021D1F84(TheStruct *param0);
+static void ov111_021D1FB4(TheStruct *param0);
+static void ov111_021D2034(TheStruct *param0);
+static void ScratchOffCards_InitGraphics(TheStruct *param0);
 static void ov111_021D2044(BgConfig *bgConfig);
 static void ov111_021D2090(void *param0);
 static void ScratchOffCards_SetVRAMBanks(void);
 static void ScratchOffCards_InitBgs(BgConfig *bgConfig);
-static void ov111_021D2248(UnkStruct_ov111_021D0F7C *param0, u32 param1);
+static void ov111_021D2248(TheStruct *param0, u32 param1);
 static void ScratchOffCards_LoadSubScreenPalette(void);
-static void ov111_021D228C(UnkStruct_ov111_021D0F7C *param0, u32 param1);
-static void ov111_021D233C(UnkStruct_ov111_021D0F7C *param0, u32 param1);
+static void ov111_021D228C(TheStruct *param0, u32 param1);
+static void ov111_021D233C(TheStruct *param0, u32 param1);
 static void ScratchOffCards_LoadMainScreenPalette(void);
-static void ov111_021D2380(UnkStruct_ov111_021D0F7C *param0, u32 param1);
-static u8 ov111_021D23C4(UnkStruct_ov111_021D0F7C *param0, Window *window, int entryID, u32 xOffset, u32 yOffset, u32 renderDelay, u8 fgColor, u8 shadowColor, u8 bgColor, u8 fontID);
-static u8 ov111_021D2424(UnkStruct_ov111_021D0F7C *param0, Window *window, int entryID, u32 xOffset, u32 yOffset, u32 renderDelay, u8 fgColor, u8 shadowColor, u8 bgColor, u8 fontID);
-static u8 ov111_021D2494(UnkStruct_ov111_021D0F7C *param0);
-static u8 ov111_021D24D4(UnkStruct_ov111_021D0F7C *param0);
-static u8 ov111_021D2518(UnkStruct_ov111_021D0F7C *param0);
-static u8 ov111_021D255C(UnkStruct_ov111_021D0F7C *param0);
-static u8 ov111_021D25BC(UnkStruct_ov111_021D0F7C *param0);
-static u8 ov111_021D2604(UnkStruct_ov111_021D0F7C *param0);
-static u8 ov111_021D263C(UnkStruct_ov111_021D0F7C *param0);
-static u8 ov111_021D2674(UnkStruct_ov111_021D0F7C *param0, u8 param1);
-static void ov111_021D26CC(UnkStruct_ov111_021D0F7C *param0, u32 index, s32 number);
-static void ov111_021D26E4(UnkStruct_ov111_021D0F7C *param0, int *param1, int param2);
-static void ov111_021D26EC(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D271C(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D27AC(UnkStruct_ov111_021D0F7C *param0, u8 unused);
-static void ov111_021D27BC(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D27D4(UnkStruct_ov111_021D0F7C *param0, u8 unused);
-static BOOL ov111_021D2868(UnkStruct_ov111_021D0F7C *param0, u8 param1);
-static void ov111_021D28E8(UnkStruct_ov111_021D0F7C *param0, u32 bgLayer, u8 palette, u8 width, u8 height);
-static u8 ov111_021D2918(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D2940(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D295C(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D297C(UnkStruct_ov111_021D0F7C *param0, int rectIndex);
-static void ov111_021D29D8(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D2A18(UnkStruct_ov111_021D0F7C *param0, int param1, int param2);
-static BOOL ov111_021D2A68(UnkStruct_ov111_021D0F7C *param0, u8 rectIndex);
-static void ov111_021D2B20(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D2BBC(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D2D14(UnkStruct_ov111_021D0F7C *param0);
-static BOOL ov111_021D2D60(UnkStruct_ov111_021D0F7C *param0, u8 param1);
-static void ov111_021D2E18(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D2E20(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D2E28(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D2E4C(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D2E8C(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D2EB4(UnkStruct_ov111_021D0F7C *param0);
-static void ov111_021D2ECC(UnkStruct_ov111_021D0F7C *param0, int param1, int param2);
-static void ov111_021D2F38(UnkStruct_ov111_021D0F7C *param0, u32 param1, u32 param2);
+static void ov111_021D2380(TheStruct *param0, u32 param1);
+static u8 ScratchOffCards_PrintMessage(TheStruct *param0, Window *window, int entryID, u32 xOffset, u32 yOffset, u32 renderDelay, u8 fgColor, u8 shadowColor, u8 bgColor, u8 fontID);
+static u8 ScratchOffCards_PrintMessageAlignCenter(TheStruct *param0, Window *window, int entryID, u32 xOffset, u32 yOffset, u32 renderDelay, u8 fgColor, u8 shadowColor, u8 bgColor, u8 fontID);
+static u8 ov111_021D2494(TheStruct *param0);
+static u8 ov111_021D24D4(TheStruct *param0);
+static u8 ov111_021D2518(TheStruct *param0);
+static u8 ov111_021D255C(TheStruct *param0);
+static u8 ov111_021D25BC(TheStruct *param0);
+static u8 ov111_021D2604(TheStruct *param0);
+static u8 ov111_021D263C(TheStruct *param0);
+static u8 ov111_021D2674(TheStruct *param0, u8 param1);
+static void ov111_021D26CC(TheStruct *param0, u32 index, s32 number);
+static void ScratchOffCards_ChangeState(TheStruct *param0, int *state, int newState);
+static void ov111_021D26EC(TheStruct *param0);
+static void ov111_021D271C(TheStruct *param0);
+static void ov111_021D27AC(TheStruct *param0, u8 unused);
+static void ov111_021D27BC(TheStruct *param0);
+static void ov111_021D27D4(TheStruct *param0, u8 unused);
+static BOOL ov111_021D2868(TheStruct *param0, u8 param1);
+static void ov111_021D28E8(TheStruct *param0, u32 bgLayer, u8 palette, u8 width, u8 height);
+static u8 ov111_021D2918(TheStruct *param0);
+static void ov111_021D2940(TheStruct *param0);
+static void ov111_021D295C(TheStruct *param0);
+static void ov111_021D297C(TheStruct *param0, int rectIndex);
+static void ov111_021D29D8(TheStruct *param0);
+static void ov111_021D2A18(TheStruct *param0, int param1, int param2);
+static BOOL ov111_021D2A68(TheStruct *param0, u8 rectIndex);
+static void ov111_021D2B20(TheStruct *param0);
+static BOOL ov111_021D2BBC(TheStruct *param0);
+static BOOL ov111_021D2D14(TheStruct *param0);
+static BOOL ov111_021D2D60(TheStruct *param0, u8 param1);
+static void ov111_021D2E18(TheStruct *param0);
+static void ov111_021D2E20(TheStruct *param0);
+static void ov111_021D2E28(TheStruct *param0);
+static void ov111_021D2E4C(TheStruct *param0);
+static void ov111_021D2E8C(TheStruct *param0);
+static void ov111_021D2EB4(TheStruct *param0);
+static void ov111_021D2ECC(TheStruct *param0, int param1, int param2);
+static void ov111_021D2F38(TheStruct *param0, u32 param1, u32 param2);
 
 static const Point2D Unk_ov111_021D3620[3] = {
     { 52, 68 },
@@ -320,8 +254,8 @@ BOOL ScratchOffCards_Init(ApplicationManager *appMan, int *state)
     ov111_021D1D30();
     Heap_Create(HEAP_ID_APPLICATION, HEAP_ID_SCRATCH_OFF_CARDS, 0x48000);
 
-    UnkStruct_ov111_021D0F7C *v1 = ApplicationManager_NewData(appMan, sizeof(UnkStruct_ov111_021D0F7C), HEAP_ID_SCRATCH_OFF_CARDS);
-    memset(v1, 0, sizeof(UnkStruct_ov111_021D0F7C));
+    TheStruct *v1 = ApplicationManager_NewData(appMan, sizeof(TheStruct), HEAP_ID_SCRATCH_OFF_CARDS);
+    memset(v1, 0, sizeof(TheStruct));
 
     v1->bgConfig = BgConfig_New(HEAP_ID_SCRATCH_OFF_CARDS);
     v1->unk_00 = appMan;
@@ -351,72 +285,72 @@ BOOL ScratchOffCards_Init(ApplicationManager *appMan, int *state)
 
 BOOL ScratchOffCards_Main(ApplicationManager *appMan, int *state)
 {
-    UnkStruct_ov111_021D0F7C *v0 = ApplicationManager_Data(appMan);
+    TheStruct *theDataOfStruct = ApplicationManager_Data(appMan);
 
     switch (*state) {
     case 0:
-        if (ov111_021D0F7C(v0) == TRUE) {
-            ov111_021D26E4(v0, state, 1);
+        if (ov111_021D0F7C(theDataOfStruct) == TRUE) { // fade both screens
+            ScratchOffCards_ChangeState(theDataOfStruct, state, 1);
         }
         break;
     case 1:
-        if (ov111_021D0FC8(v0) == TRUE) {
-            ov111_021D26E4(v0, state, 2);
+        if (ov111_021D0FC8(theDataOfStruct) == TRUE) {
+            ScratchOffCards_ChangeState(theDataOfStruct, state, 2);
         }
         break;
     case 2:
-        if (ov111_021D10B8(v0) == TRUE) {
-            ov111_021D26E4(v0, state, 3);
+        if (ov111_021D10B8(theDataOfStruct) == TRUE) {
+            ScratchOffCards_ChangeState(theDataOfStruct, state, 3);
         }
         break;
     case 3:
-        if (ov111_021D116C(v0) == TRUE) {
-            if (v0->unk_0E >= 3) {
-                v0->unk_0E = 0;
+        if (ov111_021D116C(theDataOfStruct) == TRUE) {
+            if (theDataOfStruct->unk_0E >= 3) {
+                theDataOfStruct->unk_0E = 0;
 
-                ov111_021D1BEC(v0);
-                ov111_021D1AF4(v0);
-                ov111_021D1B44(v0);
-                ov111_021D26E4(v0, state, 4);
+                ov111_021D1BEC(theDataOfStruct);
+                ov111_021D1AF4(theDataOfStruct);
+                ov111_021D1B44(theDataOfStruct);
+                ScratchOffCards_ChangeState(theDataOfStruct, state, 4);
             } else {
-                ov111_021D26E4(v0, state, 1);
+                ScratchOffCards_ChangeState(theDataOfStruct, state, 1);
             }
         }
         break;
     case 4:
-        if (ov111_021D1284(v0) == TRUE) {
-            ov111_021D26E4(v0, state, 5);
+        if (ov111_021D1284(theDataOfStruct) == TRUE) {
+            ScratchOffCards_ChangeState(theDataOfStruct, state, 5);
         }
         break;
     case 5:
-        if (ov111_021D1508(v0) == TRUE) {
-            if (v0->unk_0E >= 3) {
-                ov111_021D26E4(v0, state, 7);
+        if (ov111_021D1508(theDataOfStruct) == TRUE) {
+            if (theDataOfStruct->unk_0E >= 3) {
+                ScratchOffCards_ChangeState(theDataOfStruct, state, 7);
             } else {
-                ov111_021D26E4(v0, state, 6);
+                ScratchOffCards_ChangeState(theDataOfStruct, state, 6);
             }
         }
         break;
     case 6:
-        if (ov111_021D1980(v0) == TRUE) {
-            ov111_021D26E4(v0, state, 4);
+        if (ov111_021D1980(theDataOfStruct) == TRUE) {
+            ScratchOffCards_ChangeState(theDataOfStruct, state, 4);
         }
         break;
     case 7:
-        if (ov111_021D1A88(v0) == TRUE) {
+        if (ov111_021D1A88(theDataOfStruct) == TRUE) {
             return TRUE;
         }
         break;
     }
 
-    SpriteList_Update(v0->unk_16C.spriteList);
+    SpriteList_Update(theDataOfStruct->unk_16C.spriteList);
 
     return FALSE;
 }
 
 BOOL ScratchOffCards_Exit(ApplicationManager *appMan, int *state)
 {
-    UnkStruct_ov111_021D0F7C *v1 = ApplicationManager_Data(appMan);
+    TheStruct *v1 = ApplicationManager_Data(appMan);
 
     DisableTouchPad();
     *(v1->unk_3D8) = v1->unk_0C;
@@ -431,12 +365,12 @@ BOOL ScratchOffCards_Exit(ApplicationManager *appMan, int *state)
     return TRUE;
 }
 
-static BOOL ov111_021D0F7C(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D0F7C(TheStruct *param0)
 {
-    switch (param0->unk_08) {
+    switch (param0->subState) {
     case 0:
         StartScreenFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, COLOR_BLACK, 6, 3, HEAP_ID_SCRATCH_OFF_CARDS);
-        param0->unk_08++;
+        param0->subState++;
         break;
     case 1:
         if (IsScreenFadeDone() == TRUE) {
@@ -449,23 +383,27 @@ static BOOL ov111_021D0F7C(UnkStruct_ov111_021D0F7C *param0)
     return FALSE;
 }
 
-static BOOL ov111_021D0FC8(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D0FC8(TheStruct *param0)
 {
-    switch (param0->unk_08) {
+    switch (param0->subState) {
     case 0:
         param0->unk_10 = -256;
 
         for (int v0 = 0; v0 < 4; v0++) {
+            // { 0, 36 },
+            // { 56, 36 },
+            // { 112, 36 },
+            // { 168, 36 },
             ov111_021D3474(param0->unk_390[v0], Unk_ov111_021D362C[v0].x + param0->unk_10, Unk_ov111_021D362C[v0].y);
-            ov111_021D3468(param0->unk_390[v0], 20 + v0);
+            ScratchOffCardsSprite_SetPriority(param0->unk_390[v0], 20 + v0);
         }
 
-        ScratchOffCards_DrawMessageBox(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_TEXTBOX], Options_Frame(param0->options));
+        ScratchOffCards_DrawMessageBox(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_TEXTBOX], Options_Frame(param0->options));
         ov111_021D24D4(param0);
         GXLayers_EngineBToggleLayers(GX_PLANEMASK_BG0, TRUE);
         param0->unk_12 = 3;
         Sound_PlayEffect(SEQ_SE_PL_SYU03_sseq);
-        param0->unk_08 = 1;
+        param0->subState = 1;
         break;
     case 1:
         param0->unk_10 += 32;
@@ -473,7 +411,7 @@ static BOOL ov111_021D0FC8(UnkStruct_ov111_021D0F7C *param0)
 
         if (param0->unk_10 >= 0) {
             if (param0->unk_12 == 0) {
-                param0->unk_08 = 2;
+                param0->subState = 2;
             } else {
                 Sound_PlayEffect(SEQ_SE_PL_SYU03_sseq);
                 param0->unk_12--;
@@ -489,18 +427,18 @@ static BOOL ov111_021D0FC8(UnkStruct_ov111_021D0F7C *param0)
     return FALSE;
 }
 
-static BOOL ov111_021D10B8(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D10B8(TheStruct *param0)
 {
-    switch (param0->unk_08) {
+    switch (param0->subState) {
     case 0:
         GXLayers_EngineAToggleLayers(GX_PLANEMASK_BG2, TRUE);
         param0->unk_0F = 30;
-        param0->unk_08 = 1;
+        param0->subState = 1;
         break;
     case 1:
         if (param0->unk_0F == 0) {
             GXLayers_EngineAToggleLayers(GX_PLANEMASK_BG2, FALSE);
-            ov111_021D345C(param0->unk_3A4, FALSE);
+            ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A4, FALSE);
         } else {
             param0->unk_0F--;
         }
@@ -508,7 +446,7 @@ static BOOL ov111_021D10B8(UnkStruct_ov111_021D0F7C *param0)
         int rectIndex = TouchScreen_CheckRectangleHeld(sSelectCardTouchRects);
         if (rectIndex != TOUCHSCREEN_INPUT_NONE) {
             GXLayers_EngineAToggleLayers(GX_PLANEMASK_BG2, FALSE);
-            ov111_021D345C(param0->unk_3A4, FALSE);
+            ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A4, FALSE);
             Sound_PlayEffect(SEQ_SE_DP_BUTTON9_sseq);
 
             param0->unk_15[param0->unk_0E] = rectIndex;
@@ -516,9 +454,9 @@ static BOOL ov111_021D10B8(UnkStruct_ov111_021D0F7C *param0)
 
             u32 x, y;
             TouchScreen_GetHoldState(&x, &y);
-            Window_EraseMessageBox(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_TEXTBOX], FALSE);
+            Window_EraseMessageBox(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_TEXTBOX], FALSE);
             GXLayers_EngineBToggleLayers(GX_PLANEMASK_BG0, FALSE);
-            param0->unk_08 = 2;
+            param0->subState = 2;
         }
         break;
     case 2:
@@ -528,19 +466,19 @@ static BOOL ov111_021D10B8(UnkStruct_ov111_021D0F7C *param0)
     return FALSE;
 }
 
-static BOOL ov111_021D116C(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D116C(TheStruct *param0)
 {
     int v1 = param0->unk_15[param0->unk_0E - 1];
 
-    switch (param0->unk_08) {
+    switch (param0->subState) {
     case 0:
         param0->unk_1C.x = 0x1000;
         param0->unk_1C.y = 0x1000;
         param0->unk_1C.z = 0x1000;
         param0->unk_10 = 0;
         param0->unk_40C_1 = 0;
-        ov111_021D3468(param0->unk_390[v1], 0);
-        param0->unk_08 = 1;
+        ScratchOffCardsSprite_SetPriority(param0->unk_390[v1], 0);
+        param0->subState = 1;
         break;
     case 1:
         ov111_021D2868(param0, v1);
@@ -560,7 +498,7 @@ static BOOL ov111_021D116C(UnkStruct_ov111_021D0F7C *param0)
             param0->unk_1C.y = 0x1000;
             param0->unk_1C.z = 0x1000;
             Sound_PlayEffect(SEQ_SE_PL_SYU03_sseq);
-            param0->unk_08 = 2;
+            param0->subState = 2;
         }
         break;
     case 2:
@@ -574,7 +512,7 @@ static BOOL ov111_021D116C(UnkStruct_ov111_021D0F7C *param0)
 
         if (param0->unk_10 >= 256) {
             ov111_021D34E0(param0->unk_390[v1], 0);
-            param0->unk_08 = 3;
+            param0->subState = 3;
         }
         break;
     case 3:
@@ -585,11 +523,11 @@ static BOOL ov111_021D116C(UnkStruct_ov111_021D0F7C *param0)
     return FALSE;
 }
 
-static BOOL ov111_021D1284(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D1284(TheStruct *param0)
 {
     int v0, v1;
 
-    switch (param0->unk_08) {
+    switch (param0->subState) {
     case 0:
         ov111_021D2EB4(param0);
 
@@ -621,17 +559,17 @@ static BOOL ov111_021D1284(UnkStruct_ov111_021D0F7C *param0)
         ov111_021D2940(param0);
         ov111_021D295C(param0);
 
-        param0->unk_08 = 1;
+        param0->subState = 1;
         break;
     case 1:
 
         for (v0 = 0; v0 < 4; v0++) {
             ov111_021D3474(param0->unk_35C[v0], 60 + param0->unk_10, 26 + (v0 * 42));
-            ov111_021D345C(param0->unk_35C[v0], TRUE);
+            ScratchOffCardsSprite_SetDrawFlag(param0->unk_35C[v0], TRUE);
         }
 
         for (v0 = 0; v0 < 3; v0++) {
-            ov111_021D3500(param0->unk_3A8[v0], 1);
+            ScratchOffCardsSprite_SetPalette(param0->unk_3A8[v0], 1);
         }
 
         param0->unk_409 = 0;
@@ -642,14 +580,14 @@ static BOOL ov111_021D1284(UnkStruct_ov111_021D0F7C *param0)
 
         for (v0 = 0; v0 < NUMBER_OF_SLOTS; v0++) {
             ov111_021D3474(param0->unk_36C[v0], Unk_ov111_021D3770[v0].x + param0->unk_10, Unk_ov111_021D3770[v0].y);
-            ov111_021D345C(param0->unk_36C[v0], TRUE);
-            ov111_021D34C4(param0->unk_36C[v0], param0->unk_3C4[v0]);
+            ScratchOffCardsSprite_SetDrawFlag(param0->unk_36C[v0], TRUE);
+            ScratchOffCardsSprite_SetAnimID(param0->unk_36C[v0], param0->unk_3C4[v0]);
         }
 
         ov111_021D28E8(param0, BG_LAYER_MAIN_1, param0->unk_15[param0->unk_0E] + 4, 32, 24);
         ov111_021D28E8(param0, BG_LAYER_SUB_2, param0->unk_15[param0->unk_0E] + 1, 32, 24);
         Sound_PlayEffect(SEQ_SE_PL_SYU03_sseq);
-        param0->unk_08 = 2;
+        param0->subState = 2;
         break;
     case 2:
         Bg_SetOffset(param0->bgConfig, BG_LAYER_SUB_2, BG_OFFSET_UPDATE_SET_X, param0->unk_12);
@@ -659,7 +597,7 @@ static BOOL ov111_021D1284(UnkStruct_ov111_021D0F7C *param0)
         param0->unk_12 += -16;
 
         if (param0->unk_10 >= 0) {
-            param0->unk_08 = 3;
+            param0->subState = 3;
         } else {
             for (v0 = 0; v0 < 4; v0++) {
                 ov111_021D3474(param0->unk_35C[v0], 60 + param0->unk_10, 26 + (v0 * 42));
@@ -681,48 +619,48 @@ static BOOL ov111_021D1284(UnkStruct_ov111_021D0F7C *param0)
     return 0;
 }
 
-static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D1508(TheStruct *param0)
 {
     int v0, rectIndex;
     u32 yesNoResult, v3;
 
-    switch (param0->unk_08) {
+    switch (param0->subState) {
     case 0:
         if (param0->unk_0E == (3 - 1)) {
-            Window_ClearAndCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_NEXT_CARD]);
+            Window_ClearAndCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_NEXT_CARD]);
             ov111_021D263C(param0);
             ov111_021D3474(param0->unk_3A0, Unk_ov111_021D3600.x, Unk_ov111_021D3600.y);
-            ov111_021D34C4(param0->unk_3A0, anim_id_0);
+            ScratchOffCardsSprite_SetAnimID(param0->unk_3A0, anim_id_0);
         } else {
-            Window_ClearAndCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_CANCEL]);
+            Window_ClearAndCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_CANCEL]);
             ov111_021D2604(param0);
         }
 
         param0->unk_0F = 30;
 
-        ov111_021D345C(param0->unk_3A4, TRUE);
+        ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A4, TRUE);
         ov111_021D2518(param0);
 
         for (v0 = 0; v0 < 4; v0++) {
             ov111_021D2674(param0, v0);
         }
 
-        ov111_021D345C(param0->unk_3A0, TRUE);
-        ov111_021D350C(param0->unk_3A0, FALSE);
+        ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A0, TRUE);
+        ScratchOffCardsSprite_SetAnimate(param0->unk_3A0, FALSE);
         Sound_PlayEffect(SEQ_SE_PL_UG_020_sseq);
-        param0->unk_08 = 1;
+        param0->subState = 1;
         break;
     case 1:
         GXLayers_EngineAToggleLayers(GX_PLANEMASK_BG2, TRUE);
         GXLayers_EngineBToggleLayers(GX_PLANEMASK_BG0, TRUE);
-        param0->unk_08 = 2;
+        param0->subState = 2;
         break;
     case 2:
         if (param0->unk_0F == 0) {
-            ov111_021D345C(param0->unk_3A4, FALSE);
-            Window_FillTilemap(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO], 0);
-            Window_ScheduleCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO]);
-            param0->unk_08 = 3;
+            ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A4, FALSE);
+            Window_FillTilemap(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO], 0);
+            Window_ScheduleCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO]);
+            param0->subState = 3;
         } else {
             param0->unk_0F--;
         }
@@ -748,7 +686,7 @@ static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0)
 
             if (ov111_021D2BBC(param0) == TRUE) {
                 Sound_StopEffect(1358, 0);
-                ov111_021D345C(param0->unk_3A4, TRUE);
+                ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A4, TRUE);
 
                 param0->destVarItemId[param0->unk_0E] = param0->prizes[param0->unk_40B];
 
@@ -761,16 +699,16 @@ static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0)
                 param0->unk_0F = ov111_021D2D14(param0) == TRUE ? 30 : 0;
 
                 ov111_021D255C(param0);
-                param0->unk_08 = 4;
+                param0->subState = 4;
                 return 0;
             }
 
             if (param0->unk_40D >= 3) {
                 Sound_StopEffect(1358, 0);
                 param0->unk_0F = 60;
-                ov111_021D345C(param0->unk_3A4, TRUE);
+                ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A4, TRUE);
                 ov111_021D25BC(param0);
-                param0->unk_08 = 7;
+                param0->subState = 7;
                 return 0;
             }
         } else {
@@ -783,28 +721,28 @@ static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0)
 
         if (param0->unk_0E == (3 - 1)) {
             if (TouchScreen_CheckRectanglePressed(sCancelTouchRects) != TOUCHSCREEN_INPUT_NONE) {
-                ov111_021D350C(param0->unk_3A0, TRUE);
+                ScratchOffCardsSprite_SetAnimate(param0->unk_3A0, TRUE);
                 ov111_021D2494(param0);
 
                 Sound_PlayEffect(SEQ_SE_DP_BUTTON9_sseq);
 
-                ov111_021D34C4(param0->unk_3A0, anim_id_0);
+                ScratchOffCardsSprite_SetAnimID(param0->unk_3A0, anim_id_0);
                 ov111_021D1F70(param0);
                 ov111_021D1F84(param0);
-                param0->unk_08 = 10;
+                param0->subState = 10;
                 break;
             }
         } else {
             if (TouchScreen_CheckRectanglePressed(sNextCardTouchRects) != TOUCHSCREEN_INPUT_NONE) {
-                ov111_021D350C(param0->unk_3A0, TRUE);
+                ScratchOffCardsSprite_SetAnimate(param0->unk_3A0, TRUE);
                 ov111_021D2494(param0);
 
                 Sound_PlayEffect(SEQ_SE_DP_BUTTON9_sseq);
 
-                ov111_021D34C4(param0->unk_3A0, anim_id_1);
+                ScratchOffCardsSprite_SetAnimID(param0->unk_3A0, anim_id_1);
                 ov111_021D1F70(param0);
                 ov111_021D1F84(param0);
-                param0->unk_08 = 9;
+                param0->subState = 9;
                 break;
             }
         }
@@ -812,7 +750,7 @@ static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0)
     case 4:
         if (param0->unk_0F == 0) {
             if (ov111_021D2D60(param0, 0) == 0) {
-                param0->unk_08 = 5;
+                param0->subState = 5;
             }
         } else {
             param0->unk_0F--;
@@ -821,20 +759,20 @@ static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0)
     case 5:
         if (ov111_021D2D60(param0, 1) == 0) {
             param0->unk_0F = 0;
-            param0->unk_08 = 6;
+            param0->subState = 6;
         }
         break;
     case 6:
-        if (ov111_021D353C(param0->unk_3C0) == 1) {
+        if (ScratchOffCardsSprite_IsAnimated(param0->unk_3C0) == TRUE) {
             break;
         }
 
         if (param0->unk_0F == 0) {
             for (v0 = 0; v0 < 3; v0++) {
-                ov111_021D345C(param0->unk_3B4[v0], FALSE);
+                ScratchOffCardsSprite_SetDrawFlag(param0->unk_3B4[v0], FALSE);
             }
 
-            ov111_021D345C(param0->unk_3C0, FALSE);
+            ScratchOffCardsSprite_SetDrawFlag(param0->unk_3C0, FALSE);
             ov111_021D2E20(param0);
             ov111_021D2E28(param0);
             return 1;
@@ -848,7 +786,7 @@ static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0)
             ov111_021D2E20(param0);
             ov111_021D2E28(param0);
             param0->unk_0F = 30;
-            param0->unk_08 = 8;
+            param0->subState = 8;
         } else {
             param0->unk_0F--;
         }
@@ -864,41 +802,41 @@ static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0)
         yesNoResult = YesNoTouchMenu_ProcessInputInstant(param0->yesNoMenu);
 
         if (yesNoResult == YES_NO_TOUCH_MENU_YES) {
-            ov111_021D350C(param0->unk_3A0, FALSE);
-            Window_EraseStandardFrame(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], 0);
-            Window_ClearAndCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
+            ScratchOffCardsSprite_SetAnimate(param0->unk_3A0, FALSE);
+            Window_EraseStandardFrame(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], 0);
+            Window_ClearAndCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
             ov111_021D2E20(param0);
             ov111_021D1FB4(param0);
             return 1;
         } else if (yesNoResult == YES_NO_TOUCH_MENU_NO) {
-            ov111_021D350C(param0->unk_3A0, FALSE);
-            Window_EraseStandardFrame(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], 0);
-            Window_ClearAndCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
+            ScratchOffCardsSprite_SetAnimate(param0->unk_3A0, FALSE);
+            Window_EraseStandardFrame(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], 0);
+            Window_ClearAndCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
             ov111_021D1FB4(param0);
-            param0->unk_08 = 11;
+            param0->subState = 11;
         }
         break;
     case 10:
         yesNoResult = YesNoTouchMenu_ProcessInputInstant(param0->yesNoMenu);
 
         if (yesNoResult == YES_NO_TOUCH_MENU_YES) {
-            ov111_021D350C(param0->unk_3A0, FALSE);
-            Window_EraseStandardFrame(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], 0);
-            Window_ClearAndCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
+            ScratchOffCardsSprite_SetAnimate(param0->unk_3A0, FALSE);
+            Window_EraseStandardFrame(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], 0);
+            Window_ClearAndCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
             ov111_021D2E18(param0);
             ov111_021D1FB4(param0);
             return 1;
         } else if (yesNoResult == YES_NO_TOUCH_MENU_NO) {
-            ov111_021D350C(param0->unk_3A0, FALSE);
-            Window_EraseStandardFrame(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], 0);
-            Window_ClearAndCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
+            ScratchOffCardsSprite_SetAnimate(param0->unk_3A0, FALSE);
+            Window_EraseStandardFrame(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], 0);
+            Window_ClearAndCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
             ov111_021D1FB4(param0);
-            param0->unk_08 = 11;
+            param0->subState = 11;
         }
         break;
     case 11:
         if (TouchScreen_Touched() == 0) {
-            param0->unk_08 = 3;
+            param0->subState = 3;
         }
         break;
     }
@@ -906,24 +844,24 @@ static BOOL ov111_021D1508(UnkStruct_ov111_021D0F7C *param0)
     return 0;
 }
 
-static BOOL ov111_021D1980(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D1980(TheStruct *param0)
 {
     int v0, v1;
 
     v1 = param0->unk_15[param0->unk_0E - 1];
 
-    switch (param0->unk_08) {
+    switch (param0->subState) {
     case 0:
         GXLayers_EngineAToggleLayers(GX_PLANEMASK_BG2, FALSE);
         GXLayers_EngineBToggleLayers(GX_PLANEMASK_BG0, FALSE);
-        ov111_021D345C(param0->unk_3A0, FALSE);
+        ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A0, FALSE);
 
         param0->unk_10 = 0;
         param0->unk_12 = 0;
 
         Sound_PlayEffect(SEQ_SE_PL_SYU03_sseq);
 
-        param0->unk_08 = 1;
+        param0->subState = 1;
         break;
 
     case 1:
@@ -933,14 +871,14 @@ static BOOL ov111_021D1980(UnkStruct_ov111_021D0F7C *param0)
         param0->unk_12 += -16;
 
         if (param0->unk_10 >= 256) {
-            param0->unk_08 = 2;
+            param0->subState = 2;
         } else {
             for (v0 = 0; v0 < 4; v0++) {
                 ov111_021D3474(param0->unk_35C[v0], 60 + param0->unk_10, 26 + (v0 * 42));
             }
 
             for (v0 = 0; v0 < 3; v0++) {
-                ov111_021D345C(param0->unk_3A8[v0], FALSE);
+                ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A8[v0], FALSE);
             }
 
             for (v0 = 0; v0 < 9; v0++) {
@@ -960,22 +898,22 @@ static BOOL ov111_021D1980(UnkStruct_ov111_021D0F7C *param0)
     return 0;
 }
 
-static BOOL ov111_021D1A88(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D1A88(TheStruct *param0)
 {
     int v0;
 
-    switch (param0->unk_08) {
+    switch (param0->subState) {
     case 0:
         param0->unk_0D = 10;
-        param0->unk_08++;
+        param0->subState++;
         break;
     case 1:
         param0->unk_0D--;
 
         if (param0->unk_0D == 0) {
-            Window_EraseMessageBox(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], FALSE);
+            Window_EraseMessageBox(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], FALSE);
             StartScreenFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, COLOR_BLACK, 6, 1, HEAP_ID_SCRATCH_OFF_CARDS);
-            param0->unk_08++;
+            param0->subState++;
         }
         break;
     case 2:
@@ -988,79 +926,79 @@ static BOOL ov111_021D1A88(UnkStruct_ov111_021D0F7C *param0)
     return 0;
 }
 
-static void ov111_021D1AF4(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D1AF4(TheStruct *param0)
 {
     for (int i = 0; i < 3; i++) {
-        param0->unk_3A8[i] = ov111_021D33F4(&param0->unk_16C, res_id_3, anim_id_2, Unk_ov111_021D3770[i].x, Unk_ov111_021D3770[i].y, FALSE, 2, 10 + 1);
+        param0->unk_3A8[i] = ScratchOffCardsSprite_New(&param0->unk_16C, res_id_3, anim_id_2, Unk_ov111_021D3770[i].x, Unk_ov111_021D3770[i].y, FALSE, 2, 10 + 1);
 
-        ov111_021D345C(param0->unk_3A8[i], FALSE);
+        ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A8[i], FALSE);
     }
 }
 
-static void ov111_021D1B44(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D1B44(TheStruct *param0)
 {
     for (int i = 0; i < 3; i++) {
-        param0->unk_3B4[i] = ov111_021D33F4(&param0->unk_16C, res_id_1, anim_id_0, Unk_ov111_021D3620[i].x, Unk_ov111_021D3620[i].y, FALSE, 0, 0);
-        ov111_021D345C(param0->unk_3B4[i], FALSE);
+        param0->unk_3B4[i] = ScratchOffCardsSprite_New(&param0->unk_16C, res_id_1, anim_id_0, Unk_ov111_021D3620[i].x, Unk_ov111_021D3620[i].y, FALSE, 0, 0);
+        ScratchOffCardsSprite_SetDrawFlag(param0->unk_3B4[i], FALSE);
     }
 }
 
-static void ov111_021D1B90(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D1B90(TheStruct *param0)
 {
-    param0->unk_3A0 = ov111_021D33F4(&param0->unk_16C, res_id_3, anim_id_1, Unk_ov111_021D3604.x, Unk_ov111_021D3604.y, FALSE, 1, 0);
-    ov111_021D345C(param0->unk_3A0, FALSE);
+    param0->unk_3A0 = ScratchOffCardsSprite_New(&param0->unk_16C, res_id_3, anim_id_1, Unk_ov111_021D3604.x, Unk_ov111_021D3604.y, FALSE, 1, 0);
+    ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A0, FALSE);
 
-    param0->unk_3A4 = ov111_021D33F4(&param0->unk_16C, res_id_3, anim_id_3, Unk_ov111_021D360C.x, Unk_ov111_021D360C.y, FALSE, 1, 0);
-    ov111_021D345C(param0->unk_3A4, FALSE);
+    param0->unk_3A4 = ScratchOffCardsSprite_New(&param0->unk_16C, res_id_3, anim_id_3, Unk_ov111_021D360C.x, Unk_ov111_021D360C.y, FALSE, 1, 0);
+    ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A4, FALSE);
 }
 
-static void ov111_021D1BEC(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D1BEC(TheStruct *param0)
 {
     for (int i = 0; i < 4; i++) {
         if (param0->unk_390[i] != NULL) {
-            ov111_021D3448(param0->unk_390[i]);
+            ScratchOffCardsSprite_Delete(param0->unk_390[i]);
         }
     }
 }
 
-static void ov111_021D1C0C(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D1C0C(TheStruct *param0)
 {
     int i;
 
     for (i = 0; i < 4; i++) {
         if (param0->unk_35C[i] != NULL) {
-            ov111_021D3448(param0->unk_35C[i]);
+            ScratchOffCardsSprite_Delete(param0->unk_35C[i]);
         }
     }
 
     for (i = 0; i < 9; i++) {
         if (param0->unk_36C[i] != NULL) {
-            ov111_021D3448(param0->unk_36C[i]);
+            ScratchOffCardsSprite_Delete(param0->unk_36C[i]);
         }
     }
 
     if (param0->unk_3A0 != NULL) {
-        ov111_021D3448(param0->unk_3A0);
+        ScratchOffCardsSprite_Delete(param0->unk_3A0);
     }
 
     if (param0->unk_3A4 != NULL) {
-        ov111_021D3448(param0->unk_3A4);
+        ScratchOffCardsSprite_Delete(param0->unk_3A4);
     }
 
     for (i = 0; i < 3; i++) {
         if (param0->unk_3A8[i] != NULL) {
-            ov111_021D3448(param0->unk_3A8[i]);
+            ScratchOffCardsSprite_Delete(param0->unk_3A8[i]);
         }
     }
 
     for (i = 0; i < 3; i++) {
         if (param0->unk_3B4[i] != NULL) {
-            ov111_021D3448(param0->unk_3B4[i]);
+            ScratchOffCardsSprite_Delete(param0->unk_3B4[i]);
         }
     }
 
     if (param0->unk_3C0 != NULL) {
-        ov111_021D3448(param0->unk_3C0);
+        ScratchOffCardsSprite_Delete(param0->unk_3C0);
     }
 
     Font_Free(FONT_SUBSCREEN);
@@ -1074,14 +1012,14 @@ static void ov111_021D1C0C(UnkStruct_ov111_021D0F7C *param0)
 
     sub_02015760(param0->unk_34);
     MessageLoader_Free(param0->messageLoader);
-    StringTemplate_Free(param0->unk_3C);
-    String_Free(param0->unk_40);
-    String_Free(param0->unk_44);
+    StringTemplate_Free(param0->stringTemplate);
+    String_Free(param0->displayString);
+    String_Free(param0->formatString);
     FontSpecialChars_Free(param0->specialChars);
     Heap_Free(param0->unk_3F0);
     Heap_Free(param0->unk_3F8);
 
-    ScratchOffCards_RemoveWindows(param0->unk_5C);
+    ScratchOffCards_RemoveWindows(param0->windows);
     ov111_021D2044(param0->bgConfig);
 
     NARC_dtor(param0->narc);
@@ -1098,17 +1036,17 @@ static void ov111_021D1D30(void)
     GXS_SetVisiblePlane(0);
 }
 
-static void ov111_021D1D68(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D1D68(TheStruct *param0)
 {
     param0->narc = NARC_ctor(NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, HEAP_ID_SCRATCH_OFF_CARDS);
 
     ScratchOffCards_InitGraphics(param0);
     ov111_021D2034(param0);
 
-    param0->messageLoader = MessageLoader_Init(MSG_LOADER_LOAD_ON_DEMAND, NARC_INDEX_MSGDATA__PL_MSG, TEXT_BANK_UNK_0540, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_3C = StringTemplate_Default(HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_40 = String_Init(600, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_44 = String_Init(600, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->messageLoader = MessageLoader_Init(MSG_LOADER_LOAD_ON_DEMAND, NARC_INDEX_MSGDATA__PL_MSG, TEXT_BANK_SCRATCH_OFF_CARDS_GAME, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->stringTemplate = StringTemplate_Default(HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->displayString = String_Init(600, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->formatString = String_Init(600, HEAP_ID_SCRATCH_OFF_CARDS);
 
     Font_LoadTextPalette(PAL_LOAD_MAIN_BG, PLTT_OFFSET(13), HEAP_ID_SCRATCH_OFF_CARDS);
     Font_LoadTextPalette(PAL_LOAD_SUB_BG, PLTT_OFFSET(13), HEAP_ID_SCRATCH_OFF_CARDS);
@@ -1117,7 +1055,7 @@ static void ov111_021D1D68(UnkStruct_ov111_021D0F7C *param0)
     Font_InitManager(FONT_SUBSCREEN, HEAP_ID_SCRATCH_OFF_CARDS);
 
     param0->specialChars = FontSpecialChars_Init(15, 14, 0, HEAP_ID_SCRATCH_OFF_CARDS);
-    ScratchOffCards_AddWindows(param0->bgConfig, param0->unk_5C);
+    ScratchOffCards_AddWindows(param0->bgConfig, param0->windows);
     param0->unk_34 = sub_0201567C(NULL, 1, 12, HEAP_ID_SCRATCH_OFF_CARDS);
 
     ov111_021D2E4C(param0);
@@ -1129,26 +1067,26 @@ static void ov111_021D1D68(UnkStruct_ov111_021D0F7C *param0)
     int v0;
 
     for (v0 = 0; v0 < 4; v0++) {
-        param0->unk_35C[v0] = ov111_021D33F4(&param0->unk_16C, res_id_0, v0, 60, 26 + (v0 * 42), TRUE, 0, 0);
-        ov111_021D345C(param0->unk_35C[v0], FALSE);
+        param0->unk_35C[v0] = ScratchOffCardsSprite_New(&param0->unk_16C, res_id_0, v0, 60, 26 + (v0 * 42), TRUE, 0, 0);
+        ScratchOffCardsSprite_SetDrawFlag(param0->unk_35C[v0], FALSE);
     }
 
     for (v0 = 0; v0 < 9; v0++) {
-        param0->unk_36C[v0] = ov111_021D33F4(&param0->unk_16C, res_id_1, anim_id_0, Unk_ov111_021D3770[v0].x, Unk_ov111_021D3770[v0].y, FALSE, 2, 10);
-        ov111_021D345C(param0->unk_36C[v0], FALSE);
+        param0->unk_36C[v0] = ScratchOffCardsSprite_New(&param0->unk_16C, res_id_1, anim_id_0, Unk_ov111_021D3770[v0].x, Unk_ov111_021D3770[v0].y, FALSE, 2, 10);
+        ScratchOffCardsSprite_SetDrawFlag(param0->unk_36C[v0], FALSE);
     }
 
     ov111_021D1B90(param0);
 
     for (v0 = 0; v0 < 4; v0++) {
-        param0->unk_390[v0] = ov111_021D33F4(&param0->unk_16C, res_id_2, v0, Unk_ov111_021D362C[v0].x, Unk_ov111_021D362C[v0].y, FALSE, 1, 0);
+        param0->unk_390[v0] = ScratchOffCardsSprite_New(&param0->unk_16C, res_id_2, v0, Unk_ov111_021D362C[v0].x, Unk_ov111_021D362C[v0].y, FALSE, 1, 0);
 
         ov111_021D3474(param0->unk_390[v0], Unk_ov111_021D362C[v0].x - 256, Unk_ov111_021D362C[v0].y);
-        ov111_021D3468(param0->unk_390[v0], 20 + v0);
+        ScratchOffCardsSprite_SetPriority(param0->unk_390[v0], 20 + v0);
     }
 
-    param0->unk_3C0 = ov111_021D33F4(&param0->unk_16C, res_id_4, anim_id_0, Unk_ov111_021D3608.x, Unk_ov111_021D3608.y, FALSE, 0, 10);
-    ov111_021D345C(param0->unk_3C0, FALSE);
+    param0->unk_3C0 = ScratchOffCardsSprite_New(&param0->unk_16C, res_id_4, anim_id_0, Unk_ov111_021D3608.x, Unk_ov111_021D3608.y, FALSE, 0, 10);
+    ScratchOffCardsSprite_SetDrawFlag(param0->unk_3C0, FALSE);
 
     GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
 
@@ -1157,12 +1095,12 @@ static void ov111_021D1D68(UnkStruct_ov111_021D0F7C *param0)
     SetVBlankCallback(ov111_021D2090, (void *)param0);
 }
 
-static void ov111_021D1F70(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D1F70(TheStruct *param0)
 {
     param0->yesNoMenu = YesNoTouchMenu_New(HEAP_ID_SCRATCH_OFF_CARDS);
 }
 
-static void ov111_021D1F84(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D1F84(TheStruct *param0)
 {
     YesNoTouchMenuParams params;
 
@@ -1176,12 +1114,12 @@ static void ov111_021D1F84(UnkStruct_ov111_021D0F7C *param0)
     YesNoTouchMenu_InitWithParams(param0->yesNoMenu, &params);
 }
 
-static void ov111_021D1FB4(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D1FB4(TheStruct *param0)
 {
     YesNoTouchMenu_Free(param0->yesNoMenu);
 }
 
-static void ScratchOffCards_InitGraphics(UnkStruct_ov111_021D0F7C *param0)
+static void ScratchOffCards_InitGraphics(TheStruct *param0)
 {
     ScratchOffCards_SetVRAMBanks();
     ScratchOffCards_InitBgs(param0->bgConfig);
@@ -1202,7 +1140,7 @@ static void ScratchOffCards_InitGraphics(UnkStruct_ov111_021D0F7C *param0)
     GXLayers_EngineBToggleLayers(GX_PLANEMASK_BG0, FALSE);
 }
 
-static void ov111_021D2034(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D2034(TheStruct *param0)
 {
     ov111_021D2F80(&param0->unk_16C);
 }
@@ -1222,7 +1160,7 @@ static void ov111_021D2044(BgConfig *bgConfig)
 
 static void ov111_021D2090(void *param0)
 {
-    UnkStruct_ov111_021D0F7C *v0 = param0;
+    TheStruct *v0 = param0;
 
     if (v0->unk_04 != NULL) {
         return;
@@ -1383,13 +1321,13 @@ static void ScratchOffCards_InitBgs(BgConfig *bgConfig)
     GXLayers_EngineBToggleLayers(GX_PLANEMASK_BG2, FALSE);
 }
 
-static void ov111_021D2248(UnkStruct_ov111_021D0F7C *param0, u32 param1)
+static void ov111_021D2248(TheStruct *param0, u32 param1)
 {
     Graphics_LoadTilesToBgLayerFromOpenNARC(param0->narc, sco_member_00035_NCGR, param0->bgConfig, param1, 0, 0, 0, HEAP_ID_SCRATCH_OFF_CARDS);
     Graphics_LoadTilemapToBgLayerFromOpenNARC(param0->narc, sco_member_00037_NSCR, param0->bgConfig, param1, 0, 0, 0, HEAP_ID_SCRATCH_OFF_CARDS);
 }
 
-static void ov111_021D228C(UnkStruct_ov111_021D0F7C *param0, u32 param1)
+static void ov111_021D228C(TheStruct *param0, u32 param1)
 {
     Graphics_LoadTilesToBgLayerFromOpenNARC(param0->narc, sco_member_00038_NCGR, param0->bgConfig, param1, 0, 0, 0, HEAP_ID_SCRATCH_OFF_CARDS);
     Graphics_LoadTilemapToBgLayerFromOpenNARC(param0->narc, sco_member_00040_NSCR, param0->bgConfig, param1, 0, 0, 0, HEAP_ID_SCRATCH_OFF_CARDS);
@@ -1413,119 +1351,119 @@ static void ScratchOffCards_LoadMainScreenPalette(void)
     Heap_Free(palette);
 }
 
-static void ov111_021D233C(UnkStruct_ov111_021D0F7C *param0, u32 param1)
+static void ov111_021D233C(TheStruct *param0, u32 param1)
 {
     Graphics_LoadTilesToBgLayerFromOpenNARC(param0->narc, sco_member_00004, param0->bgConfig, param1, 0, 0, 0, HEAP_ID_SCRATCH_OFF_CARDS);
     Graphics_LoadTilemapToBgLayerFromOpenNARC(param0->narc, sco_member_00006, param0->bgConfig, param1, 0, 0, 0, HEAP_ID_SCRATCH_OFF_CARDS);
 }
 
-static void ov111_021D2380(UnkStruct_ov111_021D0F7C *param0, u32 param1)
+static void ov111_021D2380(TheStruct *param0, u32 param1)
 {
     Graphics_LoadTilesToBgLayerFromOpenNARC(param0->narc, sco_member_00007_NCGR, param0->bgConfig, param1, 0, 0, 0, HEAP_ID_SCRATCH_OFF_CARDS);
     Graphics_LoadTilemapToBgLayerFromOpenNARC(param0->narc, sco_member_00009_NSCR, param0->bgConfig, param1, 0, 0, 0, HEAP_ID_SCRATCH_OFF_CARDS);
 }
 
-static u8 ov111_021D23C4(UnkStruct_ov111_021D0F7C *param0, Window *window, int entryID, u32 xOffset, u32 yOffset, u32 renderDelay, u8 fgColor, u8 shadowColor, u8 bgColor, u8 fontID)
+static u8 ScratchOffCards_PrintMessage(TheStruct *param0, Window *window, int entryID, u32 xOffset, u32 yOffset, u32 renderDelay, u8 fgColor, u8 shadowColor, u8 bgColor, u8 fontID)
 {
     Window_FillTilemap(window, bgColor);
-    MessageLoader_GetString(param0->messageLoader, entryID, param0->unk_44);
-    StringTemplate_Format(param0->unk_3C, param0->unk_40, param0->unk_44);
+    MessageLoader_GetString(param0->messageLoader, entryID, param0->formatString);
+    StringTemplate_Format(param0->stringTemplate, param0->displayString, param0->formatString);
 
-    return Text_AddPrinterWithParamsAndColor(window, fontID, param0->unk_40, xOffset, yOffset, renderDelay, TEXT_COLOR(fgColor, shadowColor, bgColor), NULL);
+    return Text_AddPrinterWithParamsAndColor(window, fontID, param0->displayString, xOffset, yOffset, renderDelay, TEXT_COLOR(fgColor, shadowColor, bgColor), NULL);
 }
 
-static u8 ov111_021D2424(UnkStruct_ov111_021D0F7C *param0, Window *window, int entryID, u32 xOffset, u32 yOffset, u32 renderDelay, u8 fgColor, u8 shadowColor, u8 bgColor, u8 fontID)
+static u8 ScratchOffCards_PrintMessageAlignCenter(TheStruct *param0, Window *window, int entryID, u32 xOffset, u32 yOffset, u32 renderDelay, u8 fgColor, u8 shadowColor, u8 bgColor, u8 fontID)
 {
     Window_FillTilemap(window, bgColor);
-    MessageLoader_GetString(param0->messageLoader, entryID, param0->unk_44);
-    StringTemplate_Format(param0->unk_3C, param0->unk_40, param0->unk_44);
-    xOffset -= (Font_CalcStringWidth(fontID, param0->unk_40, 0) + 1) / 2;
-    return Text_AddPrinterWithParamsAndColor(window, fontID, param0->unk_40, xOffset, yOffset, renderDelay, TEXT_COLOR(fgColor, shadowColor, bgColor), NULL);
+    MessageLoader_GetString(param0->messageLoader, entryID, param0->formatString);
+    StringTemplate_Format(param0->stringTemplate, param0->displayString, param0->formatString);
+    xOffset -= (Font_CalcStringWidth(fontID, param0->displayString, 0) + 1) / 2;
+    return Text_AddPrinterWithParamsAndColor(window, fontID, param0->displayString, xOffset, yOffset, renderDelay, TEXT_COLOR(fgColor, shadowColor, bgColor), NULL);
 }
 
-static u8 ov111_021D2494(UnkStruct_ov111_021D0F7C *param0)
+static u8 ov111_021D2494(TheStruct *param0)
 {
-    ScratchOffCards_DrawWindow(param0->bgConfig, &param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
-    u8 v0 = ov111_021D23C4(param0, &param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], pl_msg_00000540_00006, 1, 1, TEXT_SPEED_INSTANT, 1, 2, 15, FONT_SYSTEM);
-    Window_ScheduleCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
-    return v0;
+    ScratchOffCards_DrawWindow(param0->bgConfig, &param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
+    u8 textPrinterID = ScratchOffCards_PrintMessage(param0, &param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING], ScratchOffCardsGame_Text_StopScratching, 1, 1, TEXT_SPEED_INSTANT, 1, 2, 15, FONT_SYSTEM);
+    Window_ScheduleCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_STOP_SCRATCHING]);
+    return textPrinterID;
 }
 
-static u8 ov111_021D24D4(UnkStruct_ov111_021D0F7C *param0)
-{
-    ov111_021D26CC(param0, 0, param0->unk_0E + 1);
-    u8 v0 = ov111_021D23C4(param0, &param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_TEXTBOX], pl_msg_00000540_00012, 1, 1, TEXT_SPEED_INSTANT, 1, 2, 15, FONT_MESSAGE);
-    Window_ScheduleCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_TEXTBOX]);
-    return v0;
-}
-
-static u8 ov111_021D2518(UnkStruct_ov111_021D0F7C *param0)
+static u8 ov111_021D24D4(TheStruct *param0)
 {
     ov111_021D26CC(param0, 0, param0->unk_0E + 1);
-    u8 v0 = ov111_021D2424(param0, &param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO], pl_msg_00000540_00009, 8 * 6, 1 + 4, TEXT_SPEED_INSTANT, 1, 2, 0, FONT_SYSTEM);
-    Window_ScheduleCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO]);
-    return v0;
+    u8 textPrinterID = ScratchOffCards_PrintMessage(param0, &param0->windows[SCRATCH_OFF_CARDS_WINDOW_TEXTBOX], ScratchOffCardsGame_Text_PleaseSelect, 1, 1, TEXT_SPEED_INSTANT, 1, 2, 15, FONT_MESSAGE);
+    Window_ScheduleCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_TEXTBOX]);
+    return textPrinterID;
 }
 
-static u8 ov111_021D255C(UnkStruct_ov111_021D0F7C *param0)
+static u8 ov111_021D2518(TheStruct *param0)
+{
+    ov111_021D26CC(param0, 0, param0->unk_0E + 1);
+    u8 textPrinterID = ScratchOffCards_PrintMessageAlignCenter(param0, &param0->windows[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO], ScratchOffCardsGame_Text_StartCard, 8 * 6, 1 + 4, TEXT_SPEED_INSTANT, 1, 2, 0, FONT_SYSTEM);
+    Window_ScheduleCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO]);
+    return textPrinterID;
+}
+
+static u8 ov111_021D255C(TheStruct *param0)
 {
     for (u8 i = 0; i < 3; i++) {
-        ov111_021D34C4(param0->unk_3B4[i], param0->unk_3C4[param0->unk_40E[i]]);
-        ov111_021D345C(param0->unk_3B4[i], TRUE);
+        ScratchOffCardsSprite_SetAnimID(param0->unk_3B4[i], param0->unk_3C4[param0->unk_40E[i]]);
+        ScratchOffCardsSprite_SetDrawFlag(param0->unk_3B4[i], TRUE);
     }
 
-    ov111_021D345C(param0->unk_3C0, TRUE);
-    ov111_021D350C(param0->unk_3C0, TRUE);
+    ScratchOffCardsSprite_SetDrawFlag(param0->unk_3C0, TRUE);
+    ScratchOffCardsSprite_SetAnimate(param0->unk_3C0, TRUE);
 
     Sound_PlayEffect(SEQ_SE_PL_CALL_sseq);
 
     return 0;
 }
 
-static u8 ov111_021D25BC(UnkStruct_ov111_021D0F7C *param0)
+static u8 ov111_021D25BC(TheStruct *param0)
 {
     Sound_PlayEffect(SEQ_SE_DP_BOX03_sseq);
-    u8 v0 = ov111_021D2424(param0, &param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_TOO_BAD], pl_msg_00000540_00011, 8 * 6, 1 + 4, TEXT_SPEED_INSTANT, 1, 2, 0, FONT_SYSTEM);
-    Window_ScheduleCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_TOO_BAD]);
-    return v0;
+    u8 textPrinterID = ScratchOffCards_PrintMessageAlignCenter(param0, &param0->windows[SCRATCH_OFF_CARDS_WINDOW_TOO_BAD], ScratchOffCardsGame_Text_TooBad, 8 * 6, 1 + 4, TEXT_SPEED_INSTANT, 1, 2, 0, FONT_SYSTEM);
+    Window_ScheduleCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_TOO_BAD]);
+    return textPrinterID;
 }
 
-static u8 ov111_021D2604(UnkStruct_ov111_021D0F7C *param0)
+static u8 ov111_021D2604(TheStruct *param0)
 {
-    u8 v0 = ov111_021D2424(param0, &param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_NEXT_CARD], pl_msg_00000540_00004, 8 * 6, 1, TEXT_SPEED_INSTANT, 1, 1, 0, FONT_SUBSCREEN);
-    Window_ScheduleCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_NEXT_CARD]);
-    return v0;
+    u8 textPrinterID = ScratchOffCards_PrintMessageAlignCenter(param0, &param0->windows[SCRATCH_OFF_CARDS_WINDOW_NEXT_CARD], ScratchOffCardsGame_Text_NextCard, 8 * 6, 1, TEXT_SPEED_INSTANT, 1, 1, 0, FONT_SUBSCREEN);
+    Window_ScheduleCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_NEXT_CARD]);
+    return textPrinterID;
 }
 
-static u8 ov111_021D263C(UnkStruct_ov111_021D0F7C *param0)
+static u8 ov111_021D263C(TheStruct *param0)
 {
-    u8 v0 = ov111_021D2424(param0, &param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_CANCEL], pl_msg_00000540_00005, 8 * 3, 1, TEXT_SPEED_INSTANT, 1, 1, 0, FONT_SUBSCREEN);
-    Window_ScheduleCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_CANCEL]);
-    return v0;
+    u8 textPrinterID = ScratchOffCards_PrintMessageAlignCenter(param0, &param0->windows[SCRATCH_OFF_CARDS_WINDOW_CANCEL], ScratchOffCardsGame_Text_Cancel, 8 * 3, 1, TEXT_SPEED_INSTANT, 1, 1, 0, FONT_SUBSCREEN);
+    Window_ScheduleCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_CANCEL]);
+    return textPrinterID;
 }
 
 static const u8 sOffsetY[4] = { 10, 12, 6, 8 };
 
-static u8 ov111_021D2674(UnkStruct_ov111_021D0F7C *param0, u8 param1)
+static u8 ov111_021D2674(TheStruct *param0, u8 param1)
 {
-    StringTemplate_SetItemName(param0->unk_3C, 0, param0->prizes[param1]);
-    u8 v0 = ov111_021D2424(param0, &param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_PRIZE_NAME_0 + param1], pl_msg_00000540_00001, 8 * 6 - 4, sOffsetY[param1], TEXT_SPEED_INSTANT, 1, 2, 0, FONT_SYSTEM);
-    Window_ScheduleCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_PRIZE_NAME_0 + param1]);
-    return v0;
+    StringTemplate_SetItemName(param0->stringTemplate, 0, param0->prizes[param1]);
+    u8 textPrinterID = ScratchOffCards_PrintMessageAlignCenter(param0, &param0->windows[SCRATCH_OFF_CARDS_WINDOW_PRIZE_NAME_0 + param1], pl_msg_00000540_00001, 8 * 6 - 4, sOffsetY[param1], TEXT_SPEED_INSTANT, 1, 2, 0, FONT_SYSTEM);
+    Window_ScheduleCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_PRIZE_NAME_0 + param1]);
+    return textPrinterID;
 }
 
-static void ov111_021D26CC(UnkStruct_ov111_021D0F7C *param0, u32 index, s32 number)
+static void ov111_021D26CC(TheStruct *param0, u32 index, s32 number)
 {
-    StringTemplate_SetNumber(param0->unk_3C, index, number, 1, PADDING_MODE_NONE, CHARSET_MODE_EN);
+    StringTemplate_SetNumber(param0->stringTemplate, index, number, 1, PADDING_MODE_NONE, CHARSET_MODE_EN);
 }
 
-static void ov111_021D26E4(UnkStruct_ov111_021D0F7C *param0, int *param1, int param2)
+static void ScratchOffCards_ChangeState(TheStruct *param0, int *state, int newState)
 {
-    param0->unk_08 = 0;
-    *param1 = param2;
+    param0->subState = 0;
+    *state = newState;
 }
 
-static void ov111_021D26EC(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D26EC(TheStruct *param0)
 {
     for (int i = 0; i < 2; i++) {
         while (TRUE) {
@@ -1539,7 +1477,7 @@ static void ov111_021D26EC(UnkStruct_ov111_021D0F7C *param0)
     }
 }
 
-static void ov111_021D271C(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D271C(TheStruct *param0)
 {
     int v0, v2, v3, slot;
     u8 v5 = LCRNG_Next() % 4;
@@ -1590,20 +1528,20 @@ static void ov111_021D271C(UnkStruct_ov111_021D0F7C *param0)
 
 // int v0, v2, v3, v4, v5;
 
-static void ov111_021D27AC(UnkStruct_ov111_021D0F7C *param0, u8 unused)
+static void ov111_021D27AC(TheStruct *param0, u8 unused)
 {
     ov111_021D26EC(param0);
     ov111_021D271C(param0);
 }
 
-static void ov111_021D27BC(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D27BC(TheStruct *param0)
 {
     for (int i = 0; i < NUMBER_OF_SLOTS; i++) {
         param0->unk_3C4[i] = 176;
     }
 }
 
-static void ov111_021D27D4(UnkStruct_ov111_021D0F7C *param0, u8 unused)
+static void ov111_021D27D4(TheStruct *param0, u8 unused)
 {
     int i, j;
     u16 prizes[4];
@@ -1645,7 +1583,7 @@ static const s8 Unk_ov111_021D3708[4][8] = {
 
 static const s8 Unk_ov111_021D3818[8] = { -4, -4, -4, -4, -4, -4, -4, -4 };
 
-static BOOL ov111_021D2868(UnkStruct_ov111_021D0F7C *param0, u8 param1)
+static BOOL ov111_021D2868(TheStruct *param0, u8 param1)
 {
     if (param0->unk_40C_1 >= 8) {
         return TRUE;
@@ -1663,13 +1601,13 @@ static BOOL ov111_021D2868(UnkStruct_ov111_021D0F7C *param0, u8 param1)
     return FALSE;
 }
 
-static void ov111_021D28E8(UnkStruct_ov111_021D0F7C *param0, u32 bgLayer, u8 palette, u8 width, u8 height)
+static void ov111_021D28E8(TheStruct *param0, u32 bgLayer, u8 palette, u8 width, u8 height)
 {
     Bg_ChangeTilemapRectPalette(param0->bgConfig, bgLayer, 0, 0, width, height, palette);
     Bg_ScheduleTilemapTransfer(param0->bgConfig, bgLayer);
 }
 
-static u8 ov111_021D2918(UnkStruct_ov111_021D0F7C *param0)
+static u8 ov111_021D2918(TheStruct *param0)
 {
     u8 i, v1 = 0;
 
@@ -1682,21 +1620,21 @@ static u8 ov111_021D2918(UnkStruct_ov111_021D0F7C *param0)
     return v1;
 }
 
-static void ov111_021D2940(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D2940(TheStruct *param0)
 {
     for (u8 i = 0; i < 9; i++) {
         param0->unk_400[i] = 0;
     }
 }
 
-static void ov111_021D295C(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D295C(TheStruct *param0)
 {
     for (u8 i = 0; i < 9; i++) {
         param0->unk_411[i] = 0;
     }
 }
 
-static void ov111_021D297C(UnkStruct_ov111_021D0F7C *param0, int rectIndex)
+static void ov111_021D297C(TheStruct *param0, int rectIndex)
 {
     for (int i = 0; i < param0->unk_424.bufferSize; i++) {
         int x = param0->unk_424.buffer[i].x;
@@ -1708,7 +1646,7 @@ static void ov111_021D297C(UnkStruct_ov111_021D0F7C *param0, int rectIndex)
     }
 }
 
-static void ov111_021D29D8(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D29D8(TheStruct *param0)
 {
     for (int v0 = 0; v0 < param0->unk_424.bufferSize; v0++) {
         u8 v1 = param0->unk_424.buffer[v0].x;
@@ -1718,7 +1656,7 @@ static void ov111_021D29D8(UnkStruct_ov111_021D0F7C *param0)
     }
 }
 
-static void ov111_021D2A18(UnkStruct_ov111_021D0F7C *param0, int param1, int param2)
+static void ov111_021D2A18(TheStruct *param0, int param1, int param2)
 {
     for (int v1 = -3; v1 < 3; v1++) {
         for (int v0 = -3; v0 < 3; v0++) {
@@ -1729,7 +1667,7 @@ static void ov111_021D2A18(UnkStruct_ov111_021D0F7C *param0, int param1, int par
     }
 }
 
-static BOOL ov111_021D2A68(UnkStruct_ov111_021D0F7C *param0, u8 rectIndex)
+static BOOL ov111_021D2A68(TheStruct *param0, u8 rectIndex)
 {
     int y, x;
 
@@ -1759,7 +1697,7 @@ static BOOL ov111_021D2A68(UnkStruct_ov111_021D0F7C *param0, u8 rectIndex)
     return FALSE;
 }
 
-static void ov111_021D2B20(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D2B20(TheStruct *param0)
 {
     param0->unk_40A++;
 
@@ -1774,8 +1712,8 @@ static void ov111_021D2B20(UnkStruct_ov111_021D0F7C *param0)
 
         if (param0->unk_40D == 2) {
             for (int v0 = 0; v0 < 2; v0++) {
-                ov111_021D3500(param0->unk_3A8[v0], 3);
-                ov111_021D345C(param0->unk_3A8[v0], TRUE);
+                ScratchOffCardsSprite_SetPalette(param0->unk_3A8[v0], 3);
+                ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A8[v0], TRUE);
                 ov111_021D3474(param0->unk_3A8[v0], Unk_ov111_021D3770[param0->unk_40E[v0]].x + -36, Unk_ov111_021D3770[param0->unk_40E[v0]].y + -10);
             }
         }
@@ -1784,7 +1722,7 @@ static void ov111_021D2B20(UnkStruct_ov111_021D0F7C *param0)
     }
 }
 
-static BOOL ov111_021D2BBC(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D2BBC(TheStruct *param0)
 {
     int v0, v1 = 0;
 
@@ -1846,13 +1784,13 @@ static BOOL ov111_021D2BBC(UnkStruct_ov111_021D0F7C *param0)
     return FALSE;
 }
 
-static BOOL ov111_021D2D14(UnkStruct_ov111_021D0F7C *param0)
+static BOOL ov111_021D2D14(TheStruct *param0)
 {
     BOOL v1 = FALSE;
 
     for (int v0 = 0; v0 < 3; v0++) {
         if (param0->unk_3C4[param0->unk_40E[v0]] == 4) {
-            ov111_021D3530(param0->unk_3B4[v0], TRUE);
+            ScratchOffCardsSprite_SetMosaic(param0->unk_3B4[v0], TRUE);
             v1 = TRUE;
         }
     }
@@ -1864,7 +1802,7 @@ static BOOL ov111_021D2D14(UnkStruct_ov111_021D0F7C *param0)
     return v1;
 }
 
-static BOOL ov111_021D2D60(UnkStruct_ov111_021D0F7C *param0, u8 param1)
+static BOOL ov111_021D2D60(TheStruct *param0, u8 param1)
 {
     int v0;
 
@@ -1888,7 +1826,7 @@ static BOOL ov111_021D2D60(UnkStruct_ov111_021D0F7C *param0, u8 param1)
         } else {
             for (v0 = 0; v0 < 3; v0++) {
                 if (param0->unk_3C4[param0->unk_40E[v0]] == 4) {
-                    ov111_021D34C4(param0->unk_3B4[v0], param0->unk_40B);
+                    ScratchOffCardsSprite_SetAnimID(param0->unk_3B4[v0], param0->unk_40B);
                 }
             }
 
@@ -1899,7 +1837,7 @@ static BOOL ov111_021D2D60(UnkStruct_ov111_021D0F7C *param0, u8 param1)
             param0->unk_14--;
         } else {
             for (v0 = 0; v0 < 3; v0++) {
-                ov111_021D3530(param0->unk_3B4[v0], FALSE);
+                ScratchOffCardsSprite_SetMosaic(param0->unk_3B4[v0], FALSE);
             }
 
             return FALSE;
@@ -1911,24 +1849,24 @@ static BOOL ov111_021D2D60(UnkStruct_ov111_021D0F7C *param0, u8 param1)
     return TRUE;
 }
 
-static void ov111_021D2E18(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D2E18(TheStruct *param0)
 {
     param0->unk_0E++;
 }
 
-static void ov111_021D2E20(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D2E20(TheStruct *param0)
 {
     param0->unk_0E++;
 }
 
-static void ov111_021D2E28(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D2E28(TheStruct *param0)
 {
-    ov111_021D345C(param0->unk_3A4, FALSE);
-    Window_FillTilemap(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO], 0);
-    Window_ScheduleCopyToVRAM(&param0->unk_5C[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO]);
+    ScratchOffCardsSprite_SetDrawFlag(param0->unk_3A4, FALSE);
+    Window_FillTilemap(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO], 0);
+    Window_ScheduleCopyToVRAM(&param0->windows[SCRATCH_OFF_CARDS_WINDOW_START_CARD_NO]);
 }
 
-static void ov111_021D2E4C(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D2E4C(TheStruct *param0)
 {
     param0->unk_3F0 = Graphics_GetCharData(NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00007_NCGR, FALSE, &param0->charData, HEAP_ID_SCRATCH_OFF_CARDS);
 
@@ -1936,7 +1874,7 @@ static void ov111_021D2E4C(UnkStruct_ov111_021D0F7C *param0)
     Bg_CopyTilemapBufferToVRAM(param0->bgConfig, BG_LAYER_MAIN_0);
 }
 
-static void ov111_021D2E8C(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D2E8C(TheStruct *param0)
 {
     param0->unk_3F8 = Heap_Alloc(HEAP_ID_SCRATCH_OFF_CARDS, param0->charData->szByte);
 
@@ -1945,12 +1883,12 @@ static void ov111_021D2E8C(UnkStruct_ov111_021D0F7C *param0)
     }
 }
 
-static void ov111_021D2EB4(UnkStruct_ov111_021D0F7C *param0)
+static void ov111_021D2EB4(TheStruct *param0)
 {
     memcpy(param0->unk_3F8, param0->charData->pRawData, param0->charData->szByte);
 }
 
-static void ov111_021D2ECC(UnkStruct_ov111_021D0F7C *param0, int x, int y)
+static void ov111_021D2ECC(TheStruct *param0, int x, int y)
 {
     for (int dy = -3; dy < 3; dy++) {
         for (int dx = -3; dx < 3; dx++) {
@@ -1964,7 +1902,7 @@ static void ov111_021D2ECC(UnkStruct_ov111_021D0F7C *param0, int x, int y)
     Bg_CopyTilemapBufferToVRAM(param0->bgConfig, BG_LAYER_MAIN_0);
 }
 
-static void ov111_021D2F38(UnkStruct_ov111_021D0F7C *param0, u32 x, u32 y)
+static void ov111_021D2F38(TheStruct *param0, u32 x, u32 y)
 {
     u8 mask = 0xff;
 

@@ -37,7 +37,7 @@ void ov111_021D2F80(UnkStruct_ov111_021D2F80 *param0)
     SetSubScreenViewRect(&param0->g2dRenderer, 0, 512 * FX32_ONE);
 
     for (int i = 0; i < 4; i++) {
-        param0->unk_190[i] = SpriteResourceCollection_New(Unk_ov111_021D3820[i], i, HEAP_ID_SCRATCH_OFF_CARDS);
+        param0->spriteResources[i] = SpriteResourceCollection_New(Unk_ov111_021D3820[i], i, HEAP_ID_SCRATCH_OFF_CARDS);
     }
 
     ov111_021D304C(param0, NNS_G2D_VRAM_TYPE_2DMAIN);
@@ -59,45 +59,45 @@ void ov111_021D2F80(UnkStruct_ov111_021D2F80 *param0)
 // ./build/tools/nitrogfx/nitrogfx scratch.narc.d/00012.NCGR 00012.png -palette scratch.narc.d/00013.NCLR -cell scratch.narc.d/00011.NCER -convertTo8Bpp
 static void ov111_021D304C(UnkStruct_ov111_021D2F80 *param0, int unused)
 {
-    param0->unk_1A0[2][0] = SpriteResourceCollection_AddTiles(param0->unk_190[0], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00012_NCGR, FALSE, res_id_2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[2][1] = SpriteResourceCollection_AddPalette(param0->unk_190[1], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00013_NCLR, FALSE, res_id_2, NNS_G2D_VRAM_TYPE_2DMAIN, 4, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[2][2] = SpriteResourceCollection_Add(param0->unk_190[2], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00011_NCER, FALSE, res_id_2, SPRITE_RESOURCE_CELL, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[2][3] = SpriteResourceCollection_Add(param0->unk_190[3], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00010_NANR, FALSE, res_id_2, SPRITE_RESOURCE_ANIM, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[2][0] = SpriteResourceCollection_AddTiles(param0->spriteResources[0], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00012_NCGR, FALSE, res_id_2, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[2][1] = SpriteResourceCollection_AddPalette(param0->spriteResources[1], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00013_NCLR, FALSE, res_id_2, NNS_G2D_VRAM_TYPE_2DMAIN, 4, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[2][2] = SpriteResourceCollection_Add(param0->spriteResources[2], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00011_NCER, FALSE, res_id_2, SPRITE_RESOURCE_CELL, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[2][3] = SpriteResourceCollection_Add(param0->spriteResources[3], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00010_NANR, FALSE, res_id_2, SPRITE_RESOURCE_ANIM, HEAP_ID_SCRATCH_OFF_CARDS);
 }
 
 // 5 icons
 // ./build/tools/nitrogfx/nitrogfx scratch.narc.d/00032.NCGR 00032.png -palette scratch.narc.d/00033.NCLR -cell scratch.narc.d/00031.NCER -convertTo8Bpp
 static void ov111_021D30D8(UnkStruct_ov111_021D2F80 *param0, int param1, int param2, int vramType)
 {
-    param0->unk_1A0[param1][0] = SpriteResourceCollection_AddTiles(param0->unk_190[0], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00032_NCGR, FALSE, param2, vramType, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[param1][1] = SpriteResourceCollection_AddPalette(param0->unk_190[1], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00033_NCLR, FALSE, param2, vramType, 5, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[param1][2] = SpriteResourceCollection_Add(param0->unk_190[2], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00031_NCER, FALSE, param2, SPRITE_RESOURCE_CELL, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[param1][3] = SpriteResourceCollection_Add(param0->unk_190[3], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00030_NANR, FALSE, param2, SPRITE_RESOURCE_ANIM, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[param1][0] = SpriteResourceCollection_AddTiles(param0->spriteResources[0], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00032_NCGR, FALSE, param2, vramType, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[param1][1] = SpriteResourceCollection_AddPalette(param0->spriteResources[1], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00033_NCLR, FALSE, param2, vramType, 5, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[param1][2] = SpriteResourceCollection_Add(param0->spriteResources[2], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00031_NCER, FALSE, param2, SPRITE_RESOURCE_CELL, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[param1][3] = SpriteResourceCollection_Add(param0->spriteResources[3], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00030_NANR, FALSE, param2, SPRITE_RESOURCE_ANIM, HEAP_ID_SCRATCH_OFF_CARDS);
 }
 
 // buttons and frames
 // ./build/tools/nitrogfx/nitrogfx scratch.narc.d/00016.NCGR 00016.png -palette scratch.narc.d/00017.NCLR -cell scratch.narc.d/00015.NCER -convertTo8Bpp
 static void ov111_021D3168(UnkStruct_ov111_021D2F80 *param0, int unused)
 {
-    param0->unk_1A0[3][0] = SpriteResourceCollection_AddTiles(param0->unk_190[0], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00016_NCGR, FALSE, res_id_3, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[3][1] = SpriteResourceCollection_AddPalette(param0->unk_190[1], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00017_NCLR, FALSE, res_id_3, NNS_G2D_VRAM_TYPE_2DMAIN, 4, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[3][2] = SpriteResourceCollection_Add(param0->unk_190[2], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00015_NCER, FALSE, res_id_3, SPRITE_RESOURCE_CELL, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[3][3] = SpriteResourceCollection_Add(param0->unk_190[3], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00014_NANR, FALSE, res_id_3, SPRITE_RESOURCE_ANIM, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[3][0] = SpriteResourceCollection_AddTiles(param0->spriteResources[0], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00016_NCGR, FALSE, res_id_3, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[3][1] = SpriteResourceCollection_AddPalette(param0->spriteResources[1], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00017_NCLR, FALSE, res_id_3, NNS_G2D_VRAM_TYPE_2DMAIN, 4, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[3][2] = SpriteResourceCollection_Add(param0->spriteResources[2], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00015_NCER, FALSE, res_id_3, SPRITE_RESOURCE_CELL, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[3][3] = SpriteResourceCollection_Add(param0->spriteResources[3], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00014_NANR, FALSE, res_id_3, SPRITE_RESOURCE_ANIM, HEAP_ID_SCRATCH_OFF_CARDS);
 }
 
 // the animation when got 3 same
 static void ov111_021D31F4(UnkStruct_ov111_021D2F80 *param0, int unused)
 {
-    param0->unk_1A0[4][0] = SpriteResourceCollection_AddTiles(param0->unk_190[0], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00020_NCGR, FALSE, res_id_4, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[4][1] = SpriteResourceCollection_AddPalette(param0->unk_190[1], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00021_NCLR, FALSE, res_id_4, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[4][2] = SpriteResourceCollection_Add(param0->unk_190[2], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00019_NCER, FALSE, res_id_4, SPRITE_RESOURCE_CELL, HEAP_ID_SCRATCH_OFF_CARDS);
-    param0->unk_1A0[4][3] = SpriteResourceCollection_Add(param0->unk_190[3], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00018_NANR, FALSE, res_id_4, SPRITE_RESOURCE_ANIM, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[4][0] = SpriteResourceCollection_AddTiles(param0->spriteResources[0], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00020_NCGR, FALSE, res_id_4, NNS_G2D_VRAM_TYPE_2DMAIN, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[4][1] = SpriteResourceCollection_AddPalette(param0->spriteResources[1], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00021_NCLR, FALSE, res_id_4, NNS_G2D_VRAM_TYPE_2DMAIN, 1, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[4][2] = SpriteResourceCollection_Add(param0->spriteResources[2], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00019_NCER, FALSE, res_id_4, SPRITE_RESOURCE_CELL, HEAP_ID_SCRATCH_OFF_CARDS);
+    param0->unk_1A0[4][3] = SpriteResourceCollection_Add(param0->spriteResources[3], NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, sco_member_00018_NANR, FALSE, res_id_4, SPRITE_RESOURCE_ANIM, HEAP_ID_SCRATCH_OFF_CARDS);
 }
 
 Sprite *ov111_021D3280(UnkStruct_ov111_021D2F80 *param0, u32 resourceID, u32 animID, u32 resourcePriority, u32 priority, u8 onSubScreen)
 {
     SpriteResourcesHeader resourceHeader;
-    SpriteResourcesHeader_Init(&resourceHeader, resourceID, resourceID, resourceID, resourceID, -1, -1, 0, resourcePriority, param0->unk_190[0], param0->unk_190[1], param0->unk_190[2], param0->unk_190[3], NULL, NULL);
+    SpriteResourcesHeader_Init(&resourceHeader, resourceID, resourceID, resourceID, resourceID, -1, -1, 0, resourcePriority, param0->spriteResources[0], param0->spriteResources[1], param0->spriteResources[2], param0->spriteResources[3], NULL, NULL);
 
     AffineSpriteListTemplate template;
     template.list = param0->spriteList;
@@ -111,7 +111,6 @@ Sprite *ov111_021D3280(UnkStruct_ov111_021D2F80 *param0, u32 resourceID, u32 ani
     template.affineZRotation = 0;
     template.priority = priority;
     template.heapID = HEAP_ID_SCRATCH_OFF_CARDS;
-
     if (onSubScreen == FALSE) {
         template.vramType = NNS_G2D_VRAM_TYPE_2DMAIN;
     } else {
@@ -137,7 +136,7 @@ void ov111_021D3320(UnkStruct_ov111_021D2F80 *param0)
     }
 
     for (i = 0; i < 4; i++) {
-        SpriteResourceCollection_Delete(param0->unk_190[i]);
+        SpriteResourceCollection_Delete(param0->spriteResources[i]);
     }
 
     SpriteList_Delete(param0->spriteList);
@@ -177,7 +176,7 @@ void ov111_021D33B0(UnkStruct_ov111_021D2F80 *param0, int param1)
 {
     GF_ASSERT(param1 < (s32)NELEMS(Unk_ov111_021D3940));
 
-    SpriteResource *resource = SpriteResourceCollection_Find(param0->unk_190[1], 3);
-    SpriteResourceCollection_ModifyPalette(param0->unk_190[1], resource, NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, Unk_ov111_021D3940[param1], FALSE, HEAP_ID_SCRATCH_OFF_CARDS);
+    SpriteResource *resource = SpriteResourceCollection_Find(param0->spriteResources[1], 3);
+    SpriteResourceCollection_ModifyPalette(param0->spriteResources[1], resource, NARC_INDEX_RESOURCE__ENG__SCRATCH__SCRATCH, Unk_ov111_021D3940[param1], FALSE, HEAP_ID_SCRATCH_OFF_CARDS);
     SpriteTransfer_ReplacePlttData(resource);
 }
