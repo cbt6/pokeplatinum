@@ -19,11 +19,11 @@
 
 static void ov111_021D3378(void);
 static void ov111_021D30D8(UnkStruct_ov111_021D2F80 *param0, int param1, int param2, int vramType);
-static void ov111_021D304C(UnkStruct_ov111_021D2F80 *param0, int param1);
-static void ov111_021D3168(UnkStruct_ov111_021D2F80 *param0, int param1);
-static void ov111_021D31F4(UnkStruct_ov111_021D2F80 *param0, int param1);
+static void ov111_021D304C(UnkStruct_ov111_021D2F80 *param0, int unused);
+static void ov111_021D3168(UnkStruct_ov111_021D2F80 *param0, int unused);
+static void ov111_021D31F4(UnkStruct_ov111_021D2F80 *param0, int unused);
 
-static const u8 Unk_ov111_021D3820[4] = { 5, 5, 5, 5 };
+static const u8 sSpriteResourceCapacities[4] = { 5, 5, 5, 5 };
 
 void ov111_021D2F80(UnkStruct_ov111_021D2F80 *param0)
 {
@@ -32,18 +32,18 @@ void ov111_021D2F80(UnkStruct_ov111_021D2F80 *param0)
 
     NNS_G2dInitOamManagerModule();
 
-    RenderOam_Init(0, 128, 0, 32, 0, 128, 0, 32, 115);
+    RenderOam_Init(0, 128, 0, 32, 0, 128, 0, 32, HEAP_ID_SCRATCH_OFF_CARDS);
     param0->spriteList = SpriteList_InitRendering(40, &param0->g2dRenderer, HEAP_ID_SCRATCH_OFF_CARDS);
     SetSubScreenViewRect(&param0->g2dRenderer, 0, 512 * FX32_ONE);
 
     for (int i = 0; i < 4; i++) {
-        param0->spriteResources[i] = SpriteResourceCollection_New(Unk_ov111_021D3820[i], i, HEAP_ID_SCRATCH_OFF_CARDS);
+        param0->spriteResources[i] = SpriteResourceCollection_New(sSpriteResourceCapacities[i], i, HEAP_ID_SCRATCH_OFF_CARDS);
     }
 
-    ov111_021D304C(param0, NNS_G2D_VRAM_TYPE_2DMAIN);
+    ov111_021D304C(param0, 1);
     ov111_021D30D8(param0, 1, res_id_1, NNS_G2D_VRAM_TYPE_2DMAIN);
-    ov111_021D3168(param0, NNS_G2D_VRAM_TYPE_2DMAIN);
-    ov111_021D31F4(param0, NNS_G2D_VRAM_TYPE_2DMAIN);
+    ov111_021D3168(param0, 1);
+    ov111_021D31F4(param0, 1);
     ov111_021D30D8(param0, 0, res_id_0, NNS_G2D_VRAM_TYPE_2DSUB);
 
     for (int i = 0; i < 5; i++) {
@@ -51,8 +51,8 @@ void ov111_021D2F80(UnkStruct_ov111_021D2F80 *param0)
         SpriteTransfer_RequestPlttWholeRange(param0->unk_1A0[i][1]);
     }
 
-    GXLayers_EngineBToggleLayers(GX_PLANEMASK_OBJ, 1);
-    GXLayers_EngineAToggleLayers(GX_PLANEMASK_OBJ, 1);
+    GXLayers_EngineBToggleLayers(GX_PLANEMASK_OBJ, TRUE);
+    GXLayers_EngineAToggleLayers(GX_PLANEMASK_OBJ, TRUE);
 }
 
 // 4 cards

@@ -12,6 +12,14 @@
 
 #define NUMBER_OF_SLOTS 9
 
+enum SelectCard {
+    SELECT_CARD_BLUE,
+    SELECT_CARD_PINK,
+    SELECT_CARD_YELLOW,
+    SELECT_CARD_GREEN,
+    MAX_SELECT_CARD,
+};
+
 typedef struct TheStruct {
     ApplicationManager *unk_00;
     ApplicationManager *unk_04;
@@ -21,12 +29,12 @@ typedef struct TheStruct {
     u8 unk_0B;
     u8 unk_0C;
     u8 unk_0D;
-    u8 unk_0E;
-    u8 unk_0F;
+    u8 currentSelectCardIndex;
+    u8 timer;
     s16 unk_10;
     s16 unk_12;
     u8 unk_14;
-    u8 unk_15[4];
+    u8 selectedCards[MAX_SELECT_CARD];
     u8 unk_19[3];
     VecFx32 unk_1C;
     VecFx32 unk_28;
@@ -45,7 +53,7 @@ typedef struct TheStruct {
     UnkStruct_ov111_021D2F80 unk_16C;
     ScratchOffCardsSprite *unk_35C[4];
     ScratchOffCardsSprite *unk_36C[9];
-    ScratchOffCardsSprite *unk_390[4];
+    ScratchOffCardsSprite *selectCards[MAX_SELECT_CARD];
     ScratchOffCardsSprite *unk_3A0;
     ScratchOffCardsSprite *unk_3A4;
     ScratchOffCardsSprite *unk_3A8[3];

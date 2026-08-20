@@ -1,3 +1,5 @@
+// sprites.c
+
 #include "overlay111/ov111_021D33F4.h"
 
 #include <nitro.h>
@@ -17,7 +19,7 @@ ScratchOffCardsSprite *ScratchOffCardsSprite_New(UnkStruct_ov111_021D2F80 *param
     sprite->sprite = ov111_021D3280(param0, resourceID, animID, resourcePriority, priority, onSubScreen);
     sprite->onSubScreen = onSubScreen;
 
-    ov111_021D3474(sprite, x, y);
+    ScratchOffCardsSprite_SetPosition(sprite, x, y);
 
     return sprite;
 }
@@ -39,7 +41,7 @@ void ScratchOffCardsSprite_SetPriority(ScratchOffCardsSprite *sprite, u32 priori
     Sprite_SetPriority(sprite->sprite, priority);
 }
 
-void ov111_021D3474(ScratchOffCardsSprite *sprite, int x, int y)
+void ScratchOffCardsSprite_SetPosition(ScratchOffCardsSprite *sprite, int x, int y)
 {
     VecFx32 pos;
 
@@ -53,7 +55,7 @@ void ov111_021D3474(ScratchOffCardsSprite *sprite, int x, int y)
     Sprite_SetPosition(sprite->sprite, &pos);
 }
 
-void ov111_021D349C(ScratchOffCardsSprite *sprite, int *x, int *y)
+void ScratchOffCardsSprite_GetPosition(ScratchOffCardsSprite *sprite, int *x, int *y)
 {
     const VecFx32 *pos = Sprite_GetPosition(sprite->sprite);
 
@@ -81,12 +83,12 @@ static const VecFx32 Unk_ov111_021D3834[] = {
     { FX32_ONE - (FX32_ONE / 7), FX32_ONE - (FX32_ONE / 7), FX32_ONE - (FX32_ONE / 7) }
 };
 
-void ov111_021D34E0(ScratchOffCardsSprite *sprite, u32 param1)
+void ScratchOffCardsSprite_ResetAffineScale(ScratchOffCardsSprite *sprite, u32 unused)
 {
     Sprite_SetAffineScaleEx(sprite->sprite, &Unk_ov111_021D3834[0], AFFINE_OVERWRITE_MODE_NORMAL);
 }
 
-void ov111_021D34F4(ScratchOffCardsSprite *sprite, VecFx32 *scale)
+void ScratchOffCardsSprite_SetAffineScale(ScratchOffCardsSprite *sprite, VecFx32 *scale)
 {
     Sprite_SetAffineScaleEx(sprite->sprite, scale, AFFINE_OVERWRITE_MODE_DOUBLE);
 }
